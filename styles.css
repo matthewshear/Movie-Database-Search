@@ -1,0 +1,649 @@
+/*********************************************************/
+/* GLOBAL CLASSES                                        */
+/*********************************************************/
+
+/* effect all elements */
+* {
+  /* set all elements to have padding and border included in element width */
+  box-sizing: border-box;
+}
+
+/* body element */
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font: 1em/1.5 'Roboto', sans-serif;
+  color: #222;
+}
+
+/* anchor tag element(s) */
+a {
+  text-decoration: none;
+}
+
+/* input element placeholder attributes */
+input::-webkit-input-placeholder { color: #; }
+input::-moz-input-placeholder { font-size: 0.7em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+input:-ms-input-placeholder { font-size: 0.7em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+input:-moz-placeholder { font-size: 0.7em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+
+/* selected input field */
+input::-moz-selection { color: red}
+input::selection { color: red; }
+
+/*********************************************************/
+/* HELPER CLASSES                                        */
+/*********************************************************/
+
+/* modern clearfix rule-set */
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+
+.is-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  display: none;
+}
+
+/*********************************************************/
+/* HEADER CLASSES                                        */
+/*********************************************************/
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 80px;
+}
+
+header #header-inner-container {
+  width: 90%;
+  height: 80px;
+  max-width: 1025px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+header h1 {
+  display: inline-block;
+  width: 278px;
+  font-size: 1.4em;
+  line-height: 80px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+/* *** HEADER - FORM CLASSES *** */
+
+#search-form input {
+  font-size: 1.05em;
+  width: 256px;
+  height: 46px;
+  padding-bottom: 1em;
+  padding-left: 0;
+  background: none;
+  border: none;
+  outline: 0;
+  border-bottom: 4px solid #e4e4e4;
+  transition: border-color .4s ease-in-out;
+}
+
+#search-form input ~ input {
+  margin-left: 5px;
+}
+
+#search-form input:focus {
+  border-color: #a0a0a0;
+}
+
+/* html header search form */
+#search-form {
+  display: inline-block;
+  width: 100%;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+}
+
+/* html header search form - search box */
+#search-form #search {
+  display: inline-block;
+  width: 65%;
+}
+
+/* html header search form - year box */
+#search-form #year {
+  display: inline-block;
+  width: 30%;
+}
+
+/* form submit button */
+#search-form .search-button {
+  display: inline-block;
+  width: 10%;
+  border: none;
+  background: none;
+}
+
+/* spyglass icon */
+#search-form .icn-search {
+  border: none;
+  border-radius: 3px;
+  color: #000;
+  transition: all .2s ease-in-out;
+  font-weight: bold;
+}
+
+#search-form #submit-button {
+  float: right;
+  width: 24px;
+  height: 24px;  
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+/*********************************************************/
+/* SEARCH RESULTS CLASSES                                */
+/*********************************************************/
+
+/* container element for search result list */
+#movie-list-container {
+  width: 90%;
+  max-width: 1025px;
+  margin: 155px auto 0 auto;
+  padding: 0;
+}
+
+/* movie list */
+#movie-list {
+  /*text-align: center;*/
+}
+
+/* movie list - list item */
+#movie-list li {
+  display: inline-block !important;
+  width: 100%;
+  margin: 0 0 30px 0;
+  padding: 0;
+  vertical-align: top;
+  text-align: center;
+}
+
+/* movie list - list item - anchor tags */
+#movie-list li a {
+  display: block;
+  margin: auto;
+}
+
+/* no results found search results list item */
+li.no-movies {
+  color: #b0b0b0;
+  width:  100%;
+  margin-top: 65px;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+/* no results found search results list item - inner div */
+li.no-movies div {
+  position: absolute;
+  width: 450px;
+  left: 50%;
+  margin-left: -225px;
+}
+
+/* no results found search results list item question mark icon */
+.icon-help {
+  font-size: 6em;
+  margin-bottom: 12px;
+  color: #dfdfdf;
+  display: block;
+}
+
+/* poster wrapper */
+.poster-wrap {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  margin: 0 0 12px 0;
+  padding: 0;
+  border-bottom: solid 1px #ccc;
+  background-color: #fff;
+}
+
+.movie-poster {
+  width: 100%;
+  max-height: 420px;
+  border: none;
+  border-radius: 5px;
+  padding: 0px;
+  z-index: 2000;
+  transition: all .2s ease-in-out;
+}
+
+.movie-poster:hover {
+  transform: scale(1.05);
+  border: dotted 1px #666;
+  z-index: 3000;
+}
+
+.title-year-container {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* list item movie title */
+.movie-title {
+  display: block;
+  position: relative;
+  font-size: 1.1em;
+  line-height: 1.2;
+  color: #000;
+  font-weight: 500;
+}
+
+/* list item movie year */
+.movie-year {
+  color: #9d9d9d;
+}
+
+/*********************************************************/
+/* DETAILS PAGE STYLES                                   */
+/*********************************************************/
+
+#movie-details-container {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+#movie-details-upper {
+  width: 100%;
+  height: 192px;
+  background: #4c4c4c;
+  color: #b4b4b4;
+  padding-left: 33px;
+  padding-top: 22px;
+}
+
+#movie-details-back-button {
+  color: #b4b4b4;
+  transform: scale(1.0);
+  transition: all .2s ease-in-out;
+}
+
+#movie-details-back-button:hover {
+  color: #d6d6d6;
+  transform: scale(1.3);
+}
+
+#movie-image {
+  position: absolute;
+  left: 33px;
+  top: 175px;
+  /*width: 275px;*/
+  /*height: 407px;*/
+  border: solid 9px #f6f7f7;
+  z-index: 2000;
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap: nowrap;  
+}
+
+/* placeholder image for no image movies */
+#poster-placeholder-details {
+  position: absolute;
+  left: 33px;
+  top: 175px;
+  width: 275px;
+  height: 407px;
+  border: solid 9px #f6f7f7;
+  background: #fff;
+  z-index: 1000;
+  text-align: center;
+  padding-top: 176px;
+}
+
+.poster-placeholder {
+  width: 100%;
+  height: 100%;
+  border: solid 1px #f6f7f7;
+  background: #fff;
+  z-index: 1000;
+  display: block !important;
+  text-align: center;
+  padding-top: 176px;
+  padding-bottom: 176px;
+  transition: all .2s ease-in-out;  
+}
+
+.poster-placeholder:hover {
+  transform: scale(1.1);
+}
+
+#movie-title-year-rating {
+  margin-left: 345px;
+}
+
+#movie-title-year {
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.5em;
+  margin-top: 45px;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  word-wrap: nowrap !important;
+}
+
+#movie-details-lower {
+  margin-left: 375px;
+  margin-top: 20px;
+  color: #000;
+}
+
+#movie-description {
+  color: #585858;
+  padding-bottom: 25px;
+  padding-right: 100px;
+}
+
+#movie-imdb-button {
+  background: #37d6b2;
+  color: #fff;
+  font-weight: bold;
+  padding: 14px 20px;
+  font-size: 16px;
+  border-radius: 2px;
+  transition: all .2s ease-in-out;
+}
+
+#movie-imdb-button:hover {
+  background: #59f8d4;
+  transform: scale(1.03);
+}
+
+/*********************************************************/
+/* ERROR PAGE STYLES                                     */
+/*********************************************************/
+
+#error-container {
+  width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#error-container h1 {
+  margin-left: 5.705%;;
+  font-size: 1.5em;
+  color: #f00;
+}
+
+#error-container p {
+  margin: 10px 0;
+  font-weight: bold;
+  color: #000;
+}
+
+#error-container a {
+  color: #f00;
+}
+
+/*********************************************************/
+/* MEDIA QUERY RULE-SETS                                 */
+/*********************************************************/
+
+/* screen width BETWEEN 0 AND 400px */
+@media (min-width: 0) and (max-width: 400px) {
+
+  /* shrink back button */
+  #movie-details-back-button.text-length-long,
+  #movie-details-back-button.text-length-moderate,
+  #movie-details-back-button.text-length-short {
+    font-size: 14px;
+  }
+
+  /* shrink title and year */
+  #movie-imdb-rating.text-length-long,
+  #movie-imdb-rating.text-length-moderate,
+  #movie-imdb-rating.text-length-short {
+    font-size: 14px;
+  }
+
+  /* shrink imdb rating */
+  #movie-title-year.text-length-long,
+  #movie-title-year.text-length-moderate,
+  #movie-title-year.text-length-short {
+    font-size: 16px;
+  }
+
+  /* set max-width on movie image on small or medium width screens */
+  #movie-image {
+      left: 15px;
+      height: 400px;
+      max-height: 400px;
+  }
+
+  #movie-details-lower {
+    margin: 400px 0 30px 20px;
+  }
+
+}
+
+/* screen width BETWEEN 401px AND 500px */
+@media (min-width: 401px) and (max-width: 500px) {
+
+  /* shrink back button where element has a text-length class of short, moderate or long */
+  #movie-details-back-button.text-length-short,
+  #movie-details-back-button.text-length-moderate,
+  #movie-details-back-button.text-length-long {
+    font-size: 14px;
+  }
+
+  /* shrink IMDB rating text where element has a text-length class of short, moderate or long */
+  #movie-imdb-rating.text-length-short,
+  #movie-imdb-rating.text-length-moderate,
+  #movie-imdb-rating.text-length-long {
+    font-size: 14px;
+  }
+
+  /* shrink movie title and year text where element has a text-length class of short, moderate or long */
+  #movie-title-year.text-length-short,
+  #movie-title-year.text-length-moderate,
+  #movie-title-year.text-length-long {
+    font-size: 16px;
+  }
+
+  /* shrink font-size of search form text fields */
+  #search-form input[type="text"] {
+    font-size: 13px;
+  }
+
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+
+  /* *** search page *** */
+
+  /* search form field placeholders */
+  input::-webkit-input-placeholder { font-size: 0.7em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+  input::-moz-input-placeholder { font-size: 0.7em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+  input:-ms-input-placeholder { font-size: 0.7em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+  input:-moz-placeholder { font-size: 0.7em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }  
+
+  /* shrink spyglass */
+  #submit-button {
+    zoom: 0.8;
+  }
+
+  /* *** details page *** */
+
+  /* move lower details below image */
+  #movie-details-lower {
+    /*float: left;*/
+    margin-bottom: 30px;
+    margin-top: 500px;
+    margin-left: 40px;
+  }
+
+  /* move title and year above image */
+  #movie-title-year {
+    position: absolute;
+    top: 75px;
+    left: 35px;
+    margin: 0;
+    font-size: 24px;
+  }
+
+  /* move rating above image */
+  #movie-imdb-rating {
+    position: absolute;
+    top: 110px;
+    left: 35px;
+    margin: 0;
+    font-size: 16px;
+  }
+
+}
+
+@media (min-width: 501px) and (max-width: 767px) {
+
+  /* *** search page *** */
+
+  /* search form field placeholders */
+  input::-webkit-input-placeholder { font-size: 1em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+  input::-moz-input-placeholder { font-size: 1em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+  input:-ms-input-placeholder { font-size: 1em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }
+  input:-moz-placeholder { font-size: 1em; margin: 0; padding: 0; line-height: 12px; vertical-align: bottom; }  
+
+  input[type="text"] {
+    font-size: 13px;
+  }
+
+  /* shrink spyglass */
+  #submit-button {
+    zoom: 0.8;
+  }
+
+  /* *** details page *** */
+
+  /* move lower details below image */
+  #movie-details-lower {
+    /*float: left;*/
+    margin-bottom: 30px;
+    margin-top: 500px;
+    margin-left: 40px;
+  }
+
+  /* move title and year above image */
+  #movie-title-year {
+    position: absolute;
+    top: 75px;
+    left: 35px;
+    margin: 0;
+    font-size: 24px;
+  }
+
+  /* move rating above image */
+  #movie-imdb-rating {
+    position: absolute;
+    top: 110px;
+    left: 35px;
+    margin: 0;
+    font-size: 16px;
+  }
+
+}
+
+/* switch to two columns of images */
+@media (min-width: 451px) and (max-width: 767px) {
+
+  /* switch to two columns of images */
+  #movie-list li {
+    width: 49%;
+    margin-right: 1%;
+  }
+
+  /* switch to two columns of images - remove last margin-right */
+  #movie-list li:nth-child(2n) {
+    margin-right: 0;
+  }
+
+}
+
+/* switch to three columns of images */
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+  /* shrink header width to fit on line with search form */
+  header h1 {
+    width: 25%;
+  }
+
+  /* shrink search form width to fit on line with header */
+  #search-form {
+    width: 74%;
+  }
+
+  /* switch to three columns of images */
+  #movie-list li {
+    width: 32%;
+    margin-right: 1%;
+  }
+
+  /* switch to three columns of images - remove last margin-right */
+  #movie-list li:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  /* adjust vertical placement of movie-list-container */
+  #movie-list-container {
+    margin-top: 110px;
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  /* shrink header width to fit on line with search form */
+  header h1 {
+    /*width: 256px;*/
+  }
+
+  /* shrink search form width to fit on line with header */
+  #search-form {
+    width: 70%;
+  }
+
+  /* switch to four columns of images */
+  #movie-list li {
+    width: 24%;
+    margin-right: 1.33%;
+  }
+
+  /* switch to four columns of images - remove last margin-right */
+  #movie-list li:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  /* adjust vertical placement of movie-list-container */
+  #movie-list-container {
+    margin-top: 110px;
+  }
+
+}

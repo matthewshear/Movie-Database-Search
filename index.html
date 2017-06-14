@@ -1,0 +1,90 @@
+<!--
+Matthew Shear, 2016
+Description: This project is meant to demonstrate a basic understanding of the AJAX HTTP GET method.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- basic init meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- link reset.css page -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  
+  <!-- link normalize.css page -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
+
+  <!-- link primary layout CSS file (style.css) -->
+  <meta name="description" content="Matthew Shear's Online Portfolio">
+  <meta name="keywords" content="Matthew Shear, Shear, Portfolio, project, javascript">
+  <meta name="author" content="Matthew Shear">
+ 
+  <!-- page title -->
+  <title>Portfolio Projects and Code Samples - Movie Database Search</title>
+
+  <!-- LINK TO GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <!-- include latest minified version of jquery -->
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+  <!-- link main javascript page -->
+  <script src="script.js" type="text/javascript"></script>
+
+  <noscript>
+    <meta HTTP-EQUIV="REFRESH" content="0; url=/javascript-required.php">
+  </noscript>
+
+</head>
+<body>
+
+  <!-- *** PAGE HEADER *** -->
+  <header>
+    <!-- *** INNER CONTAINER FOR TITLE AND SEARCH FORM *** -->
+    <div id="header-inner-container" class="clearfix">
+      <!-- *** HEADER TITLE *** -->
+      <h1>MovieSearch</h1>
+      <form id="search-form">
+        <label class="is-hidden" for="search">Search a Title</label>
+        <input type="search" name="search" id="search" placeholder="Search a Title...">
+        <label class="is-hidden" for="year">Search a Year</label>
+        <input type="year" maxlength="4" name="year" id="year" placeholder="Year"> 
+        <button type="submit" id="submit-button" class="search-button"><i class="material-icons icn-search">search</i></button>
+      </form>   
+    </div>   
+  </header>
+
+  <!-- *** MOVIE SEARCH RESULTS PAGE CONTAINER AND INNER MOVIE LIST *** -->
+  <div id="movie-list-container" class="clearfix">
+    <ul id="movie-list"></ul>    
+  </div>
+
+  <!-- *** MOVIE DETAILS PAGE CONTAINER *** -->
+  <div id="movie-details-container" class="clearfix">
+
+      <div id="movie-details-upper">
+        <a href="#" id="movie-details-back-button">&lt; Return to Search Results</a>
+        <img id="movie-image" src="">
+        <i id="poster-placeholder-details" class="material-icons poster-placeholder-details"></i>
+        <div id="movie-title-year-rating">
+          <div id="movie-title-year" class="" text-length=""></div>
+          <div id="movie-imdb-rating" class="" text-length=""></div>
+        </div>
+
+      </div>
+
+      <div id="movie-details-lower">
+        <b>Plot Synopsis:</b>
+        <p id="movie-description"></p>
+        <a href="#" id="movie-imdb-button" target="_blank">View on IMDB</a>
+      </div>
+
+  </div>
+
+</body>
+</html>
